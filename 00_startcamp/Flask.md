@@ -54,35 +54,35 @@
     ```
 
 - 그런데 서버 실행 명령어가 너무 길다.
-    
+  
 > `bashrc` / `bash_profile`
     >
 > - vscode integrated git bash에서는 `.bash_profile`을 로드해오지 않습니다. 그래서 혹시 환경변수를 설정하실 분들은 `.bashrc`에 만드시면 됩니다. 
     > - `.bash_profile`없이 `.bashrc` 만드는 경우 git bash 실행 시 경고 메시지가 나오긴 하지만, 처음 한번만 나오고 나서 git bash에서 자동으로 `.bash_profile`을 만들어 주기 때문에 괜찮습니다.
 
-    - 환경 변수 설정 (in `.bashrc`)
-    
-    ```bash
-        # ~/.bashrc
-        export FLASK_APP=hello.py
-    ```
-    
-        ```bash
-    # 환경변수 설정 적용
-        $ source ~/.bashrc
-        ```
-    
-        ```bash
-        # 이제는 bash 를 껐다켜도 계속 이렇게 서버 동작이 가=능하다.
-        $ flask run
-        ```
-    
+- 환경 변수 설정 (in `.bashrc`)
+
+  ```bash
+  # ~/.bashrc
+  export FLASK_APP=hello.py
+  ```
+
+  ```bash
+  # 환경변수 설정 적용
+  $ source ~/.bashrc
+  ```
+
+  ```bash
+  # 이제는 bash 를 껐다켜도 계속 이렇게 서버 동작이 가=능하다.
+  $ flask run
+  ```
+
 - [hello.py](http://hello.py) 내용이 바뀌면 항상 서버 종료 후, 다시 실행해야한다.
+  
+  - 서버 종료는 `ctrl + c`
+  
     
-- 서버 종료는 `ctrl + c`
-    
-    
-    
+  
 - 서버를 매번 다시 실행하고 싶지 않다면
 
     ```bash
@@ -238,7 +238,7 @@
     return render_template('greeting.html', html_name=name)
     ```
     
-```django
+    ```html
     <!-- templates/greeting.html -->
     <h2>{{ html_name }} 왔니?</h2>
     ```
@@ -270,6 +270,8 @@
     </body>
     </html>
     ```
+    
+    
 
 #### 1.3 jinja2 활용
 
