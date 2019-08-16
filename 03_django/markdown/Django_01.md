@@ -63,16 +63,18 @@
 - 과거에는 가상환경을 파이썬 자체적으로 제공하지 않아서 별도의 패키지를 설치해야 했다.(`virtualenv`) 버전 3.5 이후부터는 파이썬에 `venv` 라는 이름으로 가상환경 모듈을 지원한다.
 
 - 윈도우, 리눅스, 맥 구분없이 가상환경을 생성하는 방법은 동일
+    
     - 윈도우는 `Scripts` 폴더 생성
     
 - 리눅스, 맥은 `bin` 폴더 생성
-    
-        ```bash
-        # path/to/venv 에 가상환경 구성하고 싶은 경로를 적으면 된다. 
-        # 해당하는 폴더가 존재하지 않으면 파이썬이 알아서 가상환경 생성해 구성
+  
+    ```bash
+    # path/to/venv 에 가상환경 구성하고 싶은 경로를 적으면 된다. 
+    # 해당하는 폴더가 존재하지 않으면 파이썬이 알아서 가상환경 생성해 구성\
     # 만약에 파이썬이 한 PC에 여러 종류 설치되어 있으면, 해당 파이썬이 존재하는 절대 경로를 입력해서 설치
-        $ python -m venv /path/to/venv
-        ```
+    
+    $ python -m venv /path/to/venv
+    ```
     
 - `.gitignore` django  & vscode 설정
 
@@ -114,18 +116,19 @@
 **가상 환경 on/off**
 
 - git bash 에서 활성화 (가상 환경 설정 폴더 안에서 진행)
+    
     - vs code를 새로 켜지 않으면 activate 된 해당 터미널은 해당 가상환경으로 계속 잡혀있음
     
 - 터미널을 어떤 걸로 켜든 새로 켜면 무조건 글로벌이고 가상 환경을 activate를 하면 가상 환경을 잡는다.
+  
+    ```bash
+    # TIL/03_django/00_django_intro
     
-        ```bash
-        # TIL/03_django/00_django_intro
-        
-        $ source venv/Scripts/activate
-        
+    $ source venv/Scripts/activate
+    
     $ pip list # 찍어보고 아무것도 없는거 보여주기
-        $ pip list # deactivate 하고나서 방금전과 비교
-        ```
+    $ pip list # deactivate 하고나서 방금전과 비교
+    ```
     
 - 비활성화 (위치 상관없이)
 
@@ -193,7 +196,7 @@ $ python manage.py runserver
 
 - `ctrl + c`
 
-> 서버 already in use 상황
+> 서버 already in use 상황이 발생 한다면,
 >
 > ```bash
 > $ netstat -ano | findstr 8000
@@ -262,10 +265,10 @@ $ python manage.py runserver
 ### 0.6 Application 등록
 
 - 방금 생성한 application을 사용하려면 장고 프로젝트한테, 우리가 이런 앱을 만들었어! 라고 알려주어야 사용 가능하다.
-    
+  
     - 공식문서에 맞게 **INSTALLED_APPS 및 project url은 상단에 추가, app url 은 하단으로 추가한다.**
 - `pages > apps.py > class PagesConfig` 의 구조라서, `pages.apps.PagesConfig`로 작성을 한다. (모듈)
-    
+  
     > ` pages` 라고만 작성해도 된다.
 
 > **trailing comma** 
@@ -309,15 +312,15 @@ $ python manage.py runserver
     ```
 
 - TIME_ZONE
-    
-```python
-    # setting.py
-    
-    TIME_ZONE = 'Asia/Seoul' 
-```
-    
-    - [https://en.wikipedia.org/wiki/List_of_tz_database_time_zones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
-    
+  
+  ```python
+  # setting.py
+  
+  TIME_ZONE = 'Asia/Seoul'
+  ```
+  
+  - [https://en.wikipedia.org/wiki/List_of_tz_database_time_zones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
+
 - 새로고침해서 터미널에 시간이 바뀌고 한글화가 되었는지 확인해보자.
 
 - 이제 페이지를 만들 준비가 다 되었다.
@@ -563,7 +566,7 @@ lorem picsum 활용
     - default 는 `str` 이다.
     
         ```python
-    # pages/views.py
+        # pages/views.py
         
         def hello(request, name):
         		context = {'name': name}
@@ -571,12 +574,12 @@ lorem picsum 활용
         ```
         
         ```python
-    # django_intro/urls.py
+        # django_intro/urls.py
         
         urlpatterns = [
             # 혹은 path('hello/<name>/', views.hello),
-    path('hello/<str:name>/', views.hello),
-        		...
+            path('hello/<str:name>/', views.hello),
+            ...
         ]
         ```
         
@@ -585,8 +588,9 @@ lorem picsum 활용
         
         <h1>안녕하세요, {{ name }}님!</h1>
         ```
-        
-        
+    
+    
+    ​    
     
 - 2개 이상을 넘길 수도 있다.
 
@@ -837,19 +841,19 @@ lorem picsum 활용
         <hr>
         {% lorem 2 p %}
         <hr>
-    <hr>
+        <hr>
         ```
         
         - 기본 : 글씨
         - w : word
-        - p : `<p>` `</p>`, 문단
+        - p : `<p>` `</p>`, 문단
         - random : 무작위
 
 
 
 4. **글자 관련 필터**
 
-- trunccate는 자르다 라는 의미를 갖고 있음.
+- truncate는 자르다 라는 의미를 갖고 있음.
 
 - chars는 `(공백)...` 즉, **4글자(1 char)를 포함한 길이**다.
 
@@ -865,7 +869,7 @@ lorem picsum 활용
     <p>{{ my_sentence|truncatechars:3 }}</p> <!-- 문자 단위로 제한(3번째는 포함x) -->
     <p>{{ my_sentence|truncatechars:10 }}</p> <!-- 문자 단위로 제한(10번째는 포함x) -->
     <hr>
-<hr>
+    <hr>
     ```
     
     ```django
@@ -878,8 +882,9 @@ lorem picsum 활용
     <hr>
     <hr>
     ```
-    
-    
+
+
+​    
 
 5. **연산**
 
@@ -934,7 +939,7 @@ lorem picsum 활용
 
 ### 3.2 실습
 
-- ISIT YOUR BIRTHDAY?
+- IS IT YOUR BIRTHDAY?
 
   ```python
   # pages/views.py
