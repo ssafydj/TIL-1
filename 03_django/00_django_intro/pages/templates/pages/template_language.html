@@ -1,17 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  <style>
-    body {
-      height: 5000px;
-    }
-  </style>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block content %}
   <h3>1. 반복문</h3>
   {% for menu in menus %}
   <p>{{ menu }}</p>
@@ -112,6 +101,6 @@
 
   <h3>9. 기타</h3>
   <p>{{ 'google.com'|urlize }}</p>
-</body>
-</html>
+{% endblock %}
+
 
